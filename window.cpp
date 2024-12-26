@@ -149,16 +149,16 @@ void Window::KeyEvent(int key, int /*scancode*/, int action, int /*mods*/) {
             break;
         // Rotation
         case GLFW_KEY_LEFT:
-            kdron_.RotateHorizontal(-2.0f);
+            kdron_.Left();
             break;
         case GLFW_KEY_RIGHT:
-            kdron_.RotateHorizontal(2.0f);
+            kdron_.Right();
             break;
         case GLFW_KEY_UP:
-            kdron_.RotateVertical(-2.0f);
+            kdron_.Up();
             break;
         case GLFW_KEY_DOWN:
-            kdron_.RotateVertical(2.0f);
+            kdron_.Down();
             break;
         // Zoom
         case GLFW_KEY_PAGE_UP:
@@ -209,16 +209,16 @@ void Window::KeyEvent(int key, int /*scancode*/, int action, int /*mods*/) {
             break;
         // Rotation
         case GLFW_KEY_LEFT:
-            kdron_.RotateHorizontal(-2.0f);
+            kdron_.Left();
             break;
         case GLFW_KEY_RIGHT:
-            kdron_.RotateHorizontal(2.0f);
+            kdron_.Right();
             break;
         case GLFW_KEY_UP:
-            kdron_.RotateVertical(-2.0f);
+            kdron_.Up();
             break;
         case GLFW_KEY_DOWN:
-            kdron_.RotateVertical(2.0f);
+            kdron_.Down();
             break;
         // Zoom
         case GLFW_KEY_PAGE_UP:

@@ -15,6 +15,10 @@ class KDron : public IndexModel, public MovableModel {
     void Update(float delta_t);
     void RotateVertical(float amount);
     void RotateHorizontal(float amount);
+    void Left() { RotateHorizontal(-2.0f); }
+    void Right() { RotateHorizontal(2.0f); }
+    void Up() { RotateVertical(-2.0f); }
+    void Down() { RotateVertical(2.0f); }
     void Zoom(float amount);
     void SpeedUp();
     void SlowDown();
