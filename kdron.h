@@ -13,12 +13,17 @@ class KDron : public IndexModel, public MovableModel {
     void Initialize();
     void Draw(const ModelProgram& program) const;
     void Update(float delta_t);
+    void RotateVertical(float amount);
+    void RotateHorizontal(float amount);
     void SpeedUp();
     void SlowDown();
     void ToggleAnimated();
 
   private:
-    float angle_;
+    void ApplyRotation();
+
+    float angle_x_;
+    float angle_y_;
     float velocity_;
     bool animated_;
 };

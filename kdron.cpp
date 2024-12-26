@@ -1,27 +1,45 @@
 #include <GL/glew.h>
 
 #include "kdron.h"
+#include "matma.h"
 #include "vertices.h"
 
 #define TRIANGLE_COUNT 17
 
 KDron::KDron(float init_velocity, float init_angle) {
     velocity_ = init_velocity;
-    angle_ = init_angle;
+    angle_x_ = init_angle;
+    angle_y_ = init_angle;
     animated_ = true;
 }
 
 void KDron::Update(float delta_t) {
     if (!animated_)
         return;
-    angle_ += delta_t * velocity_;
-    if (angle_ > 360)
-        angle_ -= 360;
-    if (angle_ < -360)
-        angle_ += 360;
+
+    angle_x_ += delta_t * velocity_;
+    angle_y_ += delta_t * velocity_;
+    clamp(&angle_x_, -360.f, 360.f);
+    clamp(&angle_y_, -360.f, 360.f);
+    ApplyRotation();
+}
+
+void KDron::RotateVertical(float amount) {
+    angle_x_ += amount;
+    clamp(&angle_x_, -360.f, 360.f);
+    ApplyRotation();
+}
+
+void KDron::RotateHorizontal(float amount) {
+    angle_y_ += amount;
+    clamp(&angle_y_, -360.f, 360.f);
+    ApplyRotation();
+}
+
+void KDron::ApplyRotation() {
     model_matrix_.SetUnitMatrix();
-    model_matrix_.RotateAboutX(angle_);
-    model_matrix_.RotateAboutY(angle_);
+    model_matrix_.RotateAboutX(angle_x_);
+    model_matrix_.RotateAboutY(angle_y_);
 }
 
 void KDron::SpeedUp() { velocity_ *= 1.09544511501; }

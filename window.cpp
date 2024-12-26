@@ -136,6 +136,18 @@ void Window::KeyEvent(int key, int /*scancode*/, int action, int /*mods*/) {
             cube_.ToggleAnimated();
             kdron_.ToggleAnimated();
             break;
+        case GLFW_KEY_LEFT:
+            kdron_.RotateHorizontal(-2.0f);
+            break;
+        case GLFW_KEY_RIGHT:
+            kdron_.RotateHorizontal(2.0f);
+            break;
+        case GLFW_KEY_UP:
+            kdron_.RotateVertical(-2.0f);
+            break;
+        case GLFW_KEY_DOWN:
+            kdron_.RotateVertical(2.0f);
+            break;
         case GLFW_KEY_TAB:
             active_model_ = (active_model_ + 1) % 2;
             std::cout << "Changed model to " << active_model_ << std::endl;
@@ -153,6 +165,18 @@ void Window::KeyEvent(int key, int /*scancode*/, int action, int /*mods*/) {
             cube_.SpeedUp();
             kdron_.SpeedUp();
             break;
+        case GLFW_KEY_LEFT:
+            kdron_.RotateHorizontal(-2.0f);
+            break;
+        case GLFW_KEY_RIGHT:
+            kdron_.RotateHorizontal(2.0f);
+            break;
+        case GLFW_KEY_UP:
+            kdron_.RotateVertical(-2.0f);
+            break;
+        case GLFW_KEY_DOWN:
+            kdron_.RotateVertical(2.0f);
+            break;
         default:
             break;
         }
@@ -165,8 +189,9 @@ void Window::Run(void) {
         clock_t now = clock();
         if (last_time_ == 0)
             last_time_ = now;
-        cube_.Update((float)(now - last_time_) / CLOCKS_PER_SEC);
-        kdron_.Update((float)(now - last_time_) / CLOCKS_PER_SEC);
+        float delta_time = (float)(now - last_time_) / CLOCKS_PER_SEC;
+        cube_.Update(delta_time);
+        kdron_.Update(delta_time);
         last_time_ = now;
 
         if (active_model_ == 0)
