@@ -106,7 +106,7 @@ void Window::SetViewMatrix() const {
 void Window::SetProjectionMatrix() {
     glUseProgram(program_);
     if (projection_ == Orthographic) {
-        projection_matrix_ = Mat4::CreateOrthographicProjectionMatrix(
+        projection_matrix_ = Mat4::CreateOrthoProjectionMatrix(
             -1.0f, 1.0f, -1.0f, 1.0f, 0.1f, 100.0f);
     } else {
         projection_matrix_ = Mat4::CreatePerspectiveProjectionMatrix(

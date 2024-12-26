@@ -124,10 +124,9 @@ Mat4 Mat4::CreatePerspectiveProjectionMatrix(float fovy, float aspect_ratio,
     return out;
 }
 
-Mat4 Mat4::CreateOrthographicProjectionMatrix(float left, float right,
-                                              float bottom, float top,
-                                              float near_plane,
-                                              float far_plane) {
+Mat4 Mat4::CreateOrthoProjectionMatrix(float left, float right, float bottom,
+                                       float top, float near_plane,
+                                       float far_plane) {
 
     Mat4 out(0);
 
