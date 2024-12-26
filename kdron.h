@@ -9,9 +9,7 @@
 
 class KDron : public IndexModel, public MovableModel {
   public:
-    KDron(float init_velocity = 10, float init_angle = 0);
-    void SetInitAngle(float angle) { angle_ = angle; }
-    void SetVelocity(float velocity) { velocity_ = velocity; }
+    KDron(float init_velocity = 15, float init_angle = 45);
     void Initialize();
     void Draw(const ModelProgram& program) const;
     void Update(float delta_t);

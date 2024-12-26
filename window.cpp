@@ -7,7 +7,6 @@
 #include <GLFW/glfw3.h>
 
 #include "glerror.h"
-#include "indexmodel.h"
 #include "kdron.h"
 
 const char* kVertexShader = "SimpleShader.vertex.glsl";
@@ -17,10 +16,6 @@ Window::Window(const char* title, int width, int height) {
     title_ = title;
     width_ = width;
     height_ = height;
-    cube_.SetInitAngle(15);
-    cube_.SetVelocity(45);
-    kdron_.SetInitAngle(15);
-    kdron_.SetVelocity(45);
     active_model_ = 1; // Start on k-dron
     last_time_ = 0;
 }
