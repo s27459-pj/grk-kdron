@@ -16,6 +16,7 @@ Window::Window(const char* title, int width, int height) {
     title_ = title;
     width_ = width;
     height_ = height;
+    projection_ = Perspective;
     active_model_ = 1; // Start on k-dron
     last_time_ = 0;
 }
@@ -36,8 +37,6 @@ void Window::Initialize(int major_gl_version, int minor_gl_version) {
     view_matrix_.Translate(0, 0, -2);
     SetViewMatrix();
 
-    projection_matrix_ = Mat4::CreatePerspectiveProjectionMatrix(
-        60, (float)width_ / (float)height_, 0.1f, 100.0f);
     SetProjectionMatrix();
 
     glEnable(GL_DEPTH_TEST);
@@ -104,16 +103,26 @@ void Window::SetViewMatrix() const {
     program_.SetViewMatrix(view_matrix_);
 }
 
-void Window::SetProjectionMatrix() const {
+void Window::SetProjectionMatrix() {
     glUseProgram(program_);
+    if (projection_ == Orthographic) {
+        projection_matrix_ = Mat4::CreateOrthographicProjectionMatrix(
+            -1.0f, 1.0f, -1.0f, 1.0f, 0.1f, 100.0f);
+    } else {
+        projection_matrix_ = Mat4::CreatePerspectiveProjectionMatrix(
+            60, (float)width_ / (float)height_, 0.1f, 100.0f);
+    }
     program_.SetProjectionMatrix(projection_matrix_);
+}
+
+void Window::SetProjection(Projection projection) {
+    projection_ = projection;
+    SetProjectionMatrix();
 }
 
 void Window::Resize(int new_width, int new_height) {
     width_ = new_width;
     height_ = new_height;
-    projection_matrix_ = Mat4::CreatePerspectiveProjectionMatrix(
-        60, (float)width_ / (float)height_, 0.1f, 100.0f);
     SetProjectionMatrix();
     glViewport(0, 0, width_, height_);
 }
@@ -169,6 +178,20 @@ void Window::KeyEvent(int key, int /*scancode*/, int action, int /*mods*/) {
         case GLFW_KEY_TAB:
             active_model_ = (active_model_ + 1) % 2;
             std::cout << "Changed model to " << active_model_ << std::endl;
+            break;
+        // Change projection
+        case GLFW_KEY_HOME:
+            SetProjection(Perspective);
+            break;
+        case GLFW_KEY_END:
+            SetProjection(Orthographic);
+            break;
+        // Change projection for keyboards without home/end
+        case GLFW_KEY_P:
+            SetProjection(Perspective);
+            break;
+        case GLFW_KEY_O:
+            SetProjection(Orthographic);
             break;
         default:
             break;

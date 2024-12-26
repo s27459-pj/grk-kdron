@@ -20,11 +20,17 @@ class Window {
     void Run(void);
     operator GLFWwindow*() { return window_; }
 
+    enum Projection {
+        Perspective,
+        Orthographic,
+    };
+
   private:
     int width_;
     int height_;
     const char* title_;
     GLFWwindow* window_;
+    Projection projection_;
 
     Cube cube_;
     KDron kdron_;
@@ -39,7 +45,8 @@ class Window {
     void InitModels();
     void InitPrograms();
     void SetViewMatrix() const;
-    void SetProjectionMatrix() const;
+    void SetProjectionMatrix();
+    void SetProjection(Projection projection);
 
     void InitGlfwOrDie(int major_gl_version, int minor_gl_version);
     void InitGlewOrDie();
