@@ -1,26 +1,29 @@
 #ifndef VERTICES_H
 #define VERTICES_H
 
-typedef struct ColorVertex{
+typedef struct ColorVertex {
     float position[4];
     float color[4];
 } ColorVertex;
 
-typedef struct TextureVertex{
+typedef struct TextureVertex {
     float position[4];
     float texture[2];
 } TextureVertex;
 
-typedef struct SkyTextureVertex{
+typedef struct SkyTextureVertex {
     float position[4];
     float texture[3];
 } SkyTextureVertex;
 
-typedef struct NormalTextureVertex{
+typedef struct NormalTextureVertex {
     float position[4];
     float texture[2];
     float normal[3];
 } NormalTextureVertex;
 
+typedef struct Triangle {
+    unsigned int indices[3];
+} Triangle;
 
 #endif // VERTICES_H
