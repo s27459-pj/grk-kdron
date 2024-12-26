@@ -124,11 +124,11 @@ void Window::KeyEvent(int key, int /*scancode*/, int action, int /*mods*/) {
         case GLFW_KEY_ESCAPE:
             glfwSetWindowShouldClose(window_, GLFW_TRUE);
             break;
-        case GLFW_KEY_LEFT:
+        case GLFW_KEY_LEFT_BRACKET:
             cube_.SlowDown();
             kdron_.SlowDown();
             break;
-        case GLFW_KEY_RIGHT:
+        case GLFW_KEY_RIGHT_BRACKET:
             cube_.SpeedUp();
             kdron_.SpeedUp();
             break;
@@ -145,11 +145,11 @@ void Window::KeyEvent(int key, int /*scancode*/, int action, int /*mods*/) {
         }
     } else if (action == GLFW_REPEAT) {
         switch (key) {
-        case GLFW_KEY_LEFT:
+        case GLFW_KEY_LEFT_BRACKET:
             cube_.SlowDown();
             kdron_.SlowDown();
             break;
-        case GLFW_KEY_RIGHT:
+        case GLFW_KEY_RIGHT_BRACKET:
             cube_.SpeedUp();
             kdron_.SpeedUp();
             break;
