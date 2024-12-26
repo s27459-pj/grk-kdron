@@ -13,6 +13,10 @@ class Mat4 {
                                                   float aspect_ratio,
                                                   float near_plane,
                                                   float far_plane);
+    static Mat4 CreateOrthographicProjectionMatrix(float left, float right,
+                                                   float bottom, float top,
+                                                   float near_plane,
+                                                   float far_plane);
     void RotateAboutX(float angle); // gedrees
     void RotateAboutY(float angle); // gedrees
     void RotateAboutZ(float angle); // gedrees
@@ -22,6 +26,10 @@ class Mat4 {
     void Log();
 
   private:
+    // 0  4  8 12
+    // 1  5  9 13
+    // 2  6 10 14
+    // 3  7 11 15
     float matrix_[16]; // column-major
     void MultiplyBy(const Mat4&);
     explicit Mat4(float);
