@@ -124,6 +124,7 @@ void Window::KeyEvent(int key, int /*scancode*/, int action, int /*mods*/) {
         case GLFW_KEY_ESCAPE:
             glfwSetWindowShouldClose(window_, GLFW_TRUE);
             break;
+        // Speed up/slow down animation
         case GLFW_KEY_LEFT_BRACKET:
             cube_.SlowDown();
             kdron_.SlowDown();
@@ -132,10 +133,12 @@ void Window::KeyEvent(int key, int /*scancode*/, int action, int /*mods*/) {
             cube_.SpeedUp();
             kdron_.SpeedUp();
             break;
+        // Play/pause animation
         case GLFW_KEY_SPACE:
             cube_.ToggleAnimated();
             kdron_.ToggleAnimated();
             break;
+        // Rotation
         case GLFW_KEY_LEFT:
             kdron_.RotateHorizontal(-2.0f);
             break;
@@ -148,6 +151,21 @@ void Window::KeyEvent(int key, int /*scancode*/, int action, int /*mods*/) {
         case GLFW_KEY_DOWN:
             kdron_.RotateVertical(2.0f);
             break;
+        // Zoom
+        case GLFW_KEY_PAGE_UP:
+            kdron_.Zoom(0.1f);
+            break;
+        case GLFW_KEY_PAGE_DOWN:
+            kdron_.Zoom(-0.1f);
+            break;
+        // Zoom for keyboards without pgup/pgdown
+        case GLFW_KEY_EQUAL:
+            kdron_.Zoom(0.1f);
+            break;
+        case GLFW_KEY_MINUS:
+            kdron_.Zoom(-0.1f);
+            break;
+        // Change model
         case GLFW_KEY_TAB:
             active_model_ = (active_model_ + 1) % 2;
             std::cout << "Changed model to " << active_model_ << std::endl;
@@ -157,6 +175,7 @@ void Window::KeyEvent(int key, int /*scancode*/, int action, int /*mods*/) {
         }
     } else if (action == GLFW_REPEAT) {
         switch (key) {
+        // Speed up/slow down animation
         case GLFW_KEY_LEFT_BRACKET:
             cube_.SlowDown();
             kdron_.SlowDown();
@@ -165,6 +184,7 @@ void Window::KeyEvent(int key, int /*scancode*/, int action, int /*mods*/) {
             cube_.SpeedUp();
             kdron_.SpeedUp();
             break;
+        // Rotation
         case GLFW_KEY_LEFT:
             kdron_.RotateHorizontal(-2.0f);
             break;
@@ -176,6 +196,20 @@ void Window::KeyEvent(int key, int /*scancode*/, int action, int /*mods*/) {
             break;
         case GLFW_KEY_DOWN:
             kdron_.RotateVertical(2.0f);
+            break;
+        // Zoom
+        case GLFW_KEY_PAGE_UP:
+            kdron_.Zoom(0.1f);
+            break;
+        case GLFW_KEY_PAGE_DOWN:
+            kdron_.Zoom(-0.1f);
+            break;
+        // Zoom for keyboards without pgup/pgdown
+        case GLFW_KEY_EQUAL:
+            kdron_.Zoom(0.1f);
+            break;
+        case GLFW_KEY_MINUS:
+            kdron_.Zoom(-0.1f);
             break;
         default:
             break;

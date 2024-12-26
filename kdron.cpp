@@ -7,9 +7,10 @@
 #define TRIANGLE_COUNT 17
 
 KDron::KDron(float init_velocity, float init_angle) {
-    velocity_ = init_velocity;
     angle_x_ = init_angle;
     angle_y_ = init_angle;
+    scale_ = .0f;
+    velocity_ = init_velocity;
     animated_ = true;
 }
 
@@ -21,25 +22,31 @@ void KDron::Update(float delta_t) {
     angle_y_ += delta_t * velocity_;
     clamp(&angle_x_, -360.f, 360.f);
     clamp(&angle_y_, -360.f, 360.f);
-    ApplyRotation();
+    ApplyTransform();
 }
 
 void KDron::RotateVertical(float amount) {
     angle_x_ += amount;
     clamp(&angle_x_, -360.f, 360.f);
-    ApplyRotation();
+    ApplyTransform();
 }
 
 void KDron::RotateHorizontal(float amount) {
     angle_y_ += amount;
     clamp(&angle_y_, -360.f, 360.f);
-    ApplyRotation();
+    ApplyTransform();
 }
 
-void KDron::ApplyRotation() {
+void KDron::Zoom(float amount) {
+    scale_ += amount;
+    ApplyTransform();
+}
+
+void KDron::ApplyTransform() {
     model_matrix_.SetUnitMatrix();
     model_matrix_.RotateAboutX(angle_x_);
     model_matrix_.RotateAboutY(angle_y_);
+    model_matrix_.Translate(0.0f, 0.0f, scale_);
 }
 
 void KDron::SpeedUp() { velocity_ *= 1.09544511501; }
