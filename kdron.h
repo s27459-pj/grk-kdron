@@ -1,5 +1,5 @@
-#ifndef CUBE_H
-#define CUBE_H
+#ifndef KDRON_H
+#define KDRON_H
 
 #include <GL/glew.h>
 
@@ -7,9 +7,9 @@
 #include "modelprogram.h"
 #include "movablemodel.h"
 
-class Cube : public IndexModel, public MovableModel {
+class KDron : public IndexModel, public MovableModel {
   public:
-    Cube(float init_velocity = 10, float init_angle = 0);
+    KDron(float init_velocity = 10, float init_angle = 0);
     void SetInitAngle(float angle) { angle_ = angle; }
     void SetVelocity(float velocity) { velocity_ = velocity; }
     void Initialize();
@@ -25,4 +25,4 @@ class Cube : public IndexModel, public MovableModel {
     bool animated_;
 };
 
-#endif // CUBE_H
+#endif // KDRON_H
