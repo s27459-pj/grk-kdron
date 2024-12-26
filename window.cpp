@@ -21,7 +21,7 @@ Window::Window(const char* title, int width, int height) {
     cube_.SetVelocity(45);
     kdron_.SetInitAngle(15);
     kdron_.SetVelocity(45);
-    active_model_ = 0;
+    active_model_ = 1; // Start on k-dron
     last_time_ = 0;
 }
 
