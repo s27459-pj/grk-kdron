@@ -14,7 +14,7 @@ class Cube : public IndexModel, public MovableModel {
     void SetVelocity(float velocity) { velocity_ = velocity; }
     void Initialize();
     void Draw(const ModelProgram& program) const;
-    void Move(float delta_t);
+    void Update(float delta_t);
     void SpeedUp();
     void SlowDown();
     void ToggleAnimated();

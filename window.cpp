@@ -170,8 +170,8 @@ void Window::Run(void) {
         clock_t now = clock();
         if (last_time_ == 0)
             last_time_ = now;
-        cube_.Move((float)(now - last_time_) / CLOCKS_PER_SEC);
-        kdron_.Move((float)(now - last_time_) / CLOCKS_PER_SEC);
+        cube_.Update((float)(now - last_time_) / CLOCKS_PER_SEC);
+        kdron_.Update((float)(now - last_time_) / CLOCKS_PER_SEC);
         last_time_ = now;
 
         if (active_model_ == 0)

@@ -11,7 +11,7 @@ Cube::Cube(float init_velocity, float init_angle) {
     animated_ = true;
 }
 
-void Cube::Move(float delta_t) {
+void Cube::Update(float delta_t) {
     if (!animated_)
         return;
     angle_ += delta_t * velocity_;

@@ -11,7 +11,7 @@ KDron::KDron(float init_velocity, float init_angle) {
     animated_ = true;
 }
 
-void KDron::Move(float delta_t) {
+void KDron::Update(float delta_t) {
     if (!animated_)
         return;
     angle_ += delta_t * velocity_;
