@@ -7,7 +7,6 @@
 #include <GLFW/glfw3.h>
 
 #include "cube.h"
-#include "indexmodel.h"
 #include "kdron.h"
 #include "matma.h"
 
@@ -45,6 +44,7 @@ class Window {
     void InitModels();
     void InitPrograms();
     void SetViewMatrix() const;
+    void Zoom(float amount);
     void SetProjectionMatrix();
     void SetProjection(Projection projection);
 

@@ -9,7 +9,6 @@
 KDron::KDron(float init_velocity, float init_angle) {
     angle_x_ = init_angle;
     angle_y_ = init_angle;
-    scale_ = .0f;
     velocity_ = init_velocity;
     animated_ = true;
 }
@@ -37,16 +36,10 @@ void KDron::RotateHorizontal(float amount) {
     ApplyTransform();
 }
 
-void KDron::Zoom(float amount) {
-    scale_ += amount;
-    ApplyTransform();
-}
-
 void KDron::ApplyTransform() {
     model_matrix_.SetUnitMatrix();
     model_matrix_.RotateAboutX(angle_x_);
     model_matrix_.RotateAboutY(angle_y_);
-    model_matrix_.Translate(0.0f, 0.0f, scale_);
 }
 
 void KDron::SpeedUp() { velocity_ *= 1.09544511501; }

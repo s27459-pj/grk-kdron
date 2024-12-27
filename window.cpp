@@ -120,6 +120,11 @@ void Window::SetProjection(Projection projection) {
     SetProjectionMatrix();
 }
 
+void Window::Zoom(float amount) {
+    view_matrix_.Translate(0, 0, amount);
+    SetViewMatrix();
+}
+
 void Window::Resize(int new_width, int new_height) {
     width_ = new_width;
     height_ = new_height;
@@ -162,17 +167,17 @@ void Window::KeyEvent(int key, int /*scancode*/, int action, int /*mods*/) {
             break;
         // Zoom
         case GLFW_KEY_PAGE_UP:
-            kdron_.Zoom(0.1f);
+            Zoom(0.1f);
             break;
         case GLFW_KEY_PAGE_DOWN:
-            kdron_.Zoom(-0.1f);
+            Zoom(-0.1f);
             break;
         // Zoom for keyboards without pgup/pgdown
         case GLFW_KEY_EQUAL:
-            kdron_.Zoom(0.1f);
+            Zoom(0.1f);
             break;
         case GLFW_KEY_MINUS:
-            kdron_.Zoom(-0.1f);
+            Zoom(-0.1f);
             break;
         // Change model
         case GLFW_KEY_TAB:
@@ -222,17 +227,17 @@ void Window::KeyEvent(int key, int /*scancode*/, int action, int /*mods*/) {
             break;
         // Zoom
         case GLFW_KEY_PAGE_UP:
-            kdron_.Zoom(0.1f);
+            Zoom(0.1f);
             break;
         case GLFW_KEY_PAGE_DOWN:
-            kdron_.Zoom(-0.1f);
+            Zoom(-0.1f);
             break;
         // Zoom for keyboards without pgup/pgdown
         case GLFW_KEY_EQUAL:
-            kdron_.Zoom(0.1f);
+            Zoom(0.1f);
             break;
         case GLFW_KEY_MINUS:
-            kdron_.Zoom(-0.1f);
+            Zoom(-0.1f);
             break;
         default:
             break;

@@ -19,7 +19,6 @@ class KDron : public IndexModel, public MovableModel {
     void Right() { RotateHorizontal(2.0f); }
     void Up() { RotateVertical(-2.0f); }
     void Down() { RotateVertical(2.0f); }
-    void Zoom(float amount);
     void SpeedUp();
     void SlowDown();
     void ToggleAnimated();
@@ -29,7 +28,6 @@ class KDron : public IndexModel, public MovableModel {
 
     float angle_x_;
     float angle_y_;
-    float scale_;
     float velocity_;
     bool animated_;
 };
